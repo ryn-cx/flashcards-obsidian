@@ -13,8 +13,8 @@ export class SettingsTab extends PluginSettingTab {
     const description = createFragment()
     description.append(
       "This needs to be done only one time. Open Anki and click the button to grant permission.",
-          createEl('br'),
-        'Be aware that AnkiConnect must be installed.',
+      createEl('br'),
+      'Be aware that AnkiConnect must be installed.',
     )
 
     new Setting(containerEl)
@@ -37,7 +37,7 @@ export class SettingsTab extends PluginSettingTab {
           });
         });
       });
-  
+
 
     new Setting(containerEl)
       .setName("Test Anki")
@@ -50,7 +50,7 @@ export class SettingsTab extends PluginSettingTab {
             .catch(() => new Notice("Anki is not connected"));
         });
       });
-  
+
     containerEl.createEl("h2", { text: "General" });
 
     new Setting(containerEl)
@@ -98,7 +98,7 @@ export class SettingsTab extends PluginSettingTab {
 
     new Setting(containerEl)
       .setName("Folder-based deck name")
-      .setDesc("Add ID to end of line for inline cards.")
+      .setDesc("Use the folder name in Obsidian as the deck name in Anki.")
       .addToggle((toggle) =>
         toggle.setValue(plugin.settings.folderBasedDeck).onChange((value) => {
           plugin.settings.folderBasedDeck = value;
@@ -126,19 +126,19 @@ export class SettingsTab extends PluginSettingTab {
           });
       });
 
-      new Setting(containerEl)
-        .setName("Default Anki tag")
-        .setDesc("This tag will be added to each generated card on Anki")
-        .addText((text) => {
-          text
-            .setValue(plugin.settings.defaultAnkiTag)
-            .setPlaceholder("Anki tag")
-            .onChange((value) => {
-              if (!value) new Notice("No default tags will be added");
-              plugin.settings.defaultAnkiTag = value.toLowerCase();
-              plugin.saveData(plugin.settings);
-            });
-        });
+    new Setting(containerEl)
+      .setName("Default Anki tag")
+      .setDesc("This tag will be added to each generated card on Anki")
+      .addText((text) => {
+        text
+          .setValue(plugin.settings.defaultAnkiTag)
+          .setPlaceholder("Anki tag")
+          .onChange((value) => {
+            if (!value) new Notice("No default tags will be added");
+            plugin.settings.defaultAnkiTag = value.toLowerCase();
+            plugin.saveData(plugin.settings);
+          });
+      });
 
     containerEl.createEl("h2", { text: "Cards Identification" });
 
@@ -161,7 +161,7 @@ export class SettingsTab extends PluginSettingTab {
           });
       });
 
-     new Setting(containerEl)
+    new Setting(containerEl)
       .setName("Inline card separator")
       .setDesc(
         "The separator to identifty the inline cards in the notes."
@@ -188,7 +188,7 @@ export class SettingsTab extends PluginSettingTab {
       });
 
 
-     new Setting(containerEl)
+    new Setting(containerEl)
       .setName("Inline reverse card separator")
       .setDesc(
         "The separator to identifty the inline revese cards in the notes."
